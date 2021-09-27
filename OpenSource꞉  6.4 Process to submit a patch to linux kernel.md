@@ -38,17 +38,20 @@ Code<br><br>
 ```
 touch ~/.esmtprc<br>
 chmod g-rwx ~/.esmtprc<br>
-chmod o-rwx ~/.esmtprc```
+chmod o-rwx ~/.esmtprc
+```
 
 Editing the .esmtprc file in the home directory:
 
 Code<br><br>
+
 ```
 identity "my.email@gmail.com"<br>
 hostname smtp.gmail.com:587<br>
 username "my.email@gmail.com"<br>
 password "Password"<br>
-starttls required```
+starttls required
+```
 
 Create a .muttrc file in your home directory
 
@@ -60,7 +63,8 @@ set sendmail="/usr/bin/esmtp"<br>
 set envelope_from=yes<br>
 set from="Your Name <my.email@gmail.com>"<br>
 set use_from=yes<br>
-    set edit_headers=yes```
+set edit_headers=yes
+  ```
 
 ### Testing email setup
 
@@ -82,7 +86,8 @@ Create a .gitconfig file and enter the follwing commands:
 ```
 [user]<br>
    name = Your Name<br>
-   email = your.email@example.com ```
+   email = your.email@example.com 
+   ```
    
 Make sure that the email you specify here is the same email you used to set up sending mail. The Linux kernel developers will not accept a patch where the "From" email differs from the "Signed-off-by" line, which is what will happen if these two emails do not match.
 
@@ -93,7 +98,8 @@ Open a terminal
 Changing directories to your git checkout:<br><br>
 
 ```
-    cd git/kernels/staging/```
+    cd git/kernels/staging/
+   ```
     
 This is the Linux Kernel tree which can be expolored using ls and cd commands.
 
@@ -137,15 +143,17 @@ Next, you'll need to run "make" to compile your new kernel. Optionally, "make" c
 
 The e1000 driver is found in the networking portion of the kernel:<br><br>
 
-
+```
 intern@ubuntu:~/git/kernels/staging$ ls drivers/net/ethernet/intel/e1000/<br>
 e1000_ethtool.c  e1000.h  e1000_hw.c  e1000_hw.h  e1000_main.c  e1000_osdep.h  e1000_param.c  Makefile 
+```
 
 <br><br>
 Let's make a small change to the probe function of the e1000 driver. A probe function is called when the driver is loaded. Let's edit e1000_main.c:<br>
 
 ```
-vim drivers/net/ethernet/intel/e1000/e1000_main.c```
+vim drivers/net/ethernet/intel/e1000/e1000_main.c
+```
 <br>
 Next, find the probe function. You can search for text by typing '/' in standard mode. Once you've found the probe function, add a printk line to it:<br>
 
@@ -171,14 +179,17 @@ Use lsmod to see what drivers are loaded, and pick a name from that list to modi
 Recompile your kernel, by running make (with an optional -jN flag):
 
 
-```make -j2```
+```
+make -j2
+ ```
 
 You may need to fix some compilation errors. 
 
 After you've compiled the driver, you need to install your changes by running:
 
-
-```sudo make modules_install install```
+```
+sudo make modules_install install
+ ```
 
 
 Since you've compiled a completely new kernel, you need to reboot into that new kernel in order to test your module changes. Reboot your VM (or computer), and then run:
