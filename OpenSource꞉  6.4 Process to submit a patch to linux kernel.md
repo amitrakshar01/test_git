@@ -161,11 +161,11 @@ Next, find the probe function. You can search for text by typing '/' in standard
 static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent) {<br>
          struct net_device *netdev;<br>
          struct e1000_adapter *adapter;<br>
-         struct e1000_hw *hw;<br>```
-```
+         struct e1000_hw *hw;<br>
+
        printk(KERN_DEBUG "I can modify the Linux kernel!\n");
          static int cards_found = 0;
-         ```
+   ```
 Then type :wq<enter> to save the file and quit.
 
 A printk function causes a message to be written to the kernel log buffer, which can then be viewed using the dmesg command.
@@ -178,10 +178,10 @@ Use lsmod to see what drivers are loaded, and pick a name from that list to modi
 
 Recompile your kernel, by running make (with an optional -jN flag):
 
-
 ```
 make -j2
  ```
+
 
 You may need to fix some compilation errors. 
 
@@ -195,7 +195,9 @@ sudo make modules_install install
 Since you've compiled a completely new kernel, you need to reboot into that new kernel in order to test your module changes. Reboot your VM (or computer), and then run:
 
 
-```dmesg | less```
+```
+    dmesg | less
+ ```
 
 ### Submitting the Patch
 
